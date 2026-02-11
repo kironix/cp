@@ -4,30 +4,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+int main()
+{
+          ios::sync_with_stdio(false);
+          cin.tie(nullptr);
 
-    int t;
-    cin >> t;
-    while (t--) {
-        int n;
-        string s;
-        cin >> n >> s;
-        vector<int> seen(26, 0);
-        int ans = 0;
-        for (char c : s) {
-            int x = c - 'A';
-            if (seen[x] == 0) {
-                seen[x] = 1;
-                ans += 2;
-            } else {
-                ans += 1;
-            }
-        }
-        cout << ans << "\n";
-    }
-    return 0;
+          int t;
+          cin >> t;
+
+          while (t--)
+          {
+                    int n;
+                    string s;
+                    cin >> n >> s;
+
+                    vector<int> seen(26, 0);
+
+                    int ans = 0;
+
+                    for (char c : s)
+                    {
+                              int x = c - 'A';
+
+                              if (seen[x] == 0)
+                              {
+                                        seen[x] = 1;
+                                        ans += 2;
+                              }
+                              else
+                              {
+                                        ans += 1;
+                              }
+                    }
+
+                    cout << ans << "\n";
+          }
+
+          return 0;
 }
 ```
 
@@ -37,42 +50,48 @@ int main() {
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
+int main()
+{
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
     int t;
     cin >> t;
-    while (t--) {
+
+    while (t--)
+    {
         int n;
         cin >> n;
+
         int half = n / 2;
 
-        if (half % 2 == 1) {
+        if (half % 2 != 0)
+        {
             cout << "NO\n";
             continue;
         }
 
         cout << "YES\n";
-        vector<int> a;
-        long long sumE = 0, sumO = 0;
 
-        for (int i = 1; i <= half; i++) {
-            a.push_back(2 * i);
-            sumE += 2 * i;
+        long long evenSum = 0, oddSum = 0;
+
+        for (int i = 1; i <= half; i++)
+        {
+            int x = 2 * i;
+            cout << x << ' ';
+            evenSum += x;
         }
 
-        for (int i = 1; i < half; i++) {
-            a.push_back(2 * i - 1);
-            sumO += 2 * i - 1;
+        for (int i = 1; i < half; i++)
+        {
+            int x = 2 * i - 1;
+            cout << x << ' ';
+            oddSum += x;
         }
 
-        a.push_back((int)(sumE - sumO));
-
-        for (int i = 0; i < n; i++) {
-            cout << a[i] << (i + 1 == n ? '\n' : ' ');
-        }
+        cout << (evenSum - oddSum) << '\n';
     }
+
     return 0;
 }
 ```
@@ -83,24 +102,34 @@ int main() {
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+int main()
+{
+          ios::sync_with_stdio(false);
+          cin.tie(nullptr);
 
-    int n, k;
-    cin >> n >> k;
+          int n, k;
+          cin >> n >> k;
 
-    int left = 240 - k;
-    int used = 0, solved = 0;
+          int left = 240 - k;
+          int used = 0, solved = 0;
 
-    for (int i = 1; i <= n; i++) {
-        used += 5 * i;
-        if (used <= left) solved++;
-        else break;
-    }
+          for (int i = 1; i <= n; i++)
+          {
+                    used += 5 * i;
 
-    cout << solved << "\n";
-    return 0;
+                    if (used <= left)
+                    {
+                              solved++;
+                    }
+                    else
+                    {
+                              break;
+                    }
+          }
+
+          cout << solved << "\n";
+
+          return 0;
 }
 ```
 
@@ -110,28 +139,32 @@ int main() {
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+int main()
+{
+          ios::sync_with_stdio(false);
+          cin.tie(nullptr);
 
-    int t;
-    cin >> t;
-    while (t--) {
-        int n;
-        cin >> n;
-        long long s = 0;
-        for (int i = 0; i < n; i++) {
-            long long x;
-            cin >> x;
-            s += x;
-        }
+          int t, n;
+          cin >> t;
 
-        long long r = (long long)(sqrt((long double)s));
-        while (r * r < s) r++;
-        while (r * r > s) r--;
-        cout << (r * r == s ? "YES\n" : "NO\n");
-    }
-    return 0;
+          while (t--)
+          {
+                    cin >> n;
+                    long long totalSquares = 0;
+
+                    while (n--)
+                    {
+                              long long x;
+                              cin >> x;
+                              totalSquares += x;
+                    }
+
+                    long long squareRoot = sqrtl(totalSquares);
+
+                    cout << ((squareRoot * squareRoot == totalSquares) ? "YES\n" : "NO\n");
+          }
+
+          return 0;
 }
 ```
 
@@ -141,30 +174,32 @@ int main() {
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+int main()
+{
+          ios::sync_with_stdio(false);
+          cin.tie(nullptr);
 
-    int t;
-    cin >> t;
-    while (t--) {
-        long long l, r;
-        cin >> l >> r;
+          int t;
+          cin >> t;
 
-        long long dist = r - l;
-        long long len = 1;
-        long long add = 1;
-        long long used = 0;
+          while (t--)
+          {
+                    long long l, r;
+                    cin >> l >> r;
 
-        while (used + add <= dist) {
-            used += add;
-            add++;
-            len++;
-        }
+                    long long diff = r - l;
+                    long long ans = 1, step = 1;
 
-        cout << len << "\n";
-    }
-    return 0;
+                    while (diff >= step)
+                    {
+                              diff -= step;
+                              step++;
+                              ans++;
+                    }
+                    cout << ans << '\n';
+          }
+
+          return 0;
 }
 ```
 
@@ -174,25 +209,36 @@ int main() {
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+int main()
+{
+          ios::sync_with_stdio(false);
+          cin.tie(nullptr);
 
-    int n, m;
-    cin >> n >> m;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++) cin >> a[i];
+          int n, m;
+          cin >> n >> m;
 
-    sort(a.begin(), a.end());
+          vector<int> arr(n);
 
-    long long ans = 0;
-    for (int i = 0; i < m && i < n; i++) {
-        if (a[i] < 0) ans += -a[i];
-        else break;
-    }
+          for (int &x : arr)
+          {
+                    cin >> x;
+          }
 
-    cout << ans << "\n";
-    return 0;
+          sort(arr.begin(), arr.end());
+
+          int earned = 0;
+
+          for (int i = 0; i < m; i++)
+          {
+                    if (arr[i] < 0)
+                    {
+                              earned += -arr[i];
+                    }
+          }
+
+          cout << earned;
+
+          return 0;
 }
 ```
 
@@ -202,19 +248,25 @@ int main() {
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+int main()
+{
+          ios::sync_with_stdio(false);
+          cin.tie(nullptr);
 
-    long long k, n, w;
-    cin >> k >> n >> w;
+          long long k, n, w;
+          cin >> k >> n >> w;
 
-    long long total = k * (w * (w + 1) / 2);
-    long long need = total - n;
-    if (need < 0) need = 0;
+          long long totalCost = k * (w * (w + 1) / 2);
+          long long borrow = totalCost - n;
 
-    cout << need << "\n";
-    return 0;
+          if (borrow < 0)
+          {
+                    borrow = 0;
+          }
+
+          cout << borrow << "\n";
+
+          return 0;
 }
 ```
 
@@ -224,36 +276,40 @@ int main() {
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+int main()
+{
+          ios::sync_with_stdio(false);
+          cin.tie(nullptr);
 
-    int t;
-    cin >> t;
-    while (t--) {
-        int k, q;
-        cin >> k >> q;
-        vector<int> a(k);
-        for (int i = 0; i < k; i++) cin >> a[i];
+          int t;
+          cin >> t;
 
-        for (int i = 0; i < q; i++) {
-            int n;
-            cin >> n;
+          while (t--)
+          {
+                    int k, q;
+                    cin >> k >> q;
 
-            int cur = n;
-            while (true) {
-                int removed = 0;
-                for (int j = 0; j < k; j++) {
-                    if (a[j] <= cur) removed++;
-                }
-                if (removed == 0) break;
-                cur -= removed;
-            }
+                    int firstPosition;
+                    cin >> firstPosition;
 
-            cout << cur << (i + 1 == q ? '\n' : ' ');
-        }
-    }
-    return 0;
+                    for (int i = 1; i < k; i++)
+                    {
+                              int x;
+                              cin >> x;
+                    }
+
+                    int maxWinners = firstPosition - 1;
+
+                    for (int i = 0; i < q; i++)
+                    {
+                              int players;
+                              cin >> players;
+                              
+                              cout << min(players, maxWinners) << (i + 1 == q ? '\n' : ' ');
+                    }
+          }
+
+          return 0;
 }
 ```
 
@@ -263,27 +319,22 @@ int main() {
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+int main()
+{
+          ios::sync_with_stdio(false);
+          cin.tie(nullptr);
 
-    int t;
-    cin >> t;
-    while (t--) {
-        long long n;
-        cin >> n;
+          int t;
+          cin >> t;
 
-        if (n % 2 == 1) {
-            cout << 2 << " " << (n - 3) / 2 << " " << (n - 3) / 2 << " " << 1 << "\n";
-        } else {
-            if (n % 4 == 0) {
-                cout << n / 2 - 1 << " " << n / 2 - 1 << " " << 1 << " " << 2 << "\n";
-            } else {
-                cout << n / 2 - 2 << " " << n / 2 << " " << 1 << " " << 1 << "\n";
-            }
-        }
-    }
-    return 0;
+          while (t--)
+          {
+                    long long n;
+                    cin >> n;
+
+                    cout << 1 << ' ' << n - 3 << ' ' << 1 << ' ' << 1 << '\n';
+          }
+          return 0;
 }
 ```
 
@@ -293,24 +344,36 @@ int main() {
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+int main()
+{
+          ios::sync_with_stdio(false);
+          cin.tie(nullptr);
 
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++) cin >> a[i];
+          int n;
+          cin >> n;
 
-    sort(a.begin(), a.end());
+          vector<int> arr(n);
 
-    int day = 1;
-    for (int i = 0; i < n; i++) {
-        if (a[i] >= day) day++;
-    }
+          for (int &x : arr)
+          {
+                    cin >> x;
+          }
 
-    cout << day - 1 << "\n";
-    return 0;
+          sort(arr.begin(), arr.end());
+
+          int day = 0;
+
+          for (int x : arr)
+          {
+                    if (x > day)
+                    {
+                              day++;
+                    }
+          }
+
+          cout << day << '\n';
+
+          return 0;
 }
 ```
 
@@ -320,19 +383,30 @@ int main() {
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+int main()
+{
+          ios::sync_with_stdio(false);
+          cin.tie(nullptr);
 
-    int t;
-    cin >> t;
-    while (t--) {
-        string s;
-        cin >> s;
-        if ((int)s.size() <= 10) cout << s << "\n";
-        else cout << s[0] << (int)s.size() - 2 << s[(int)s.size() - 1] << "\n";
-    }
-    return 0;
+          int t;
+          cin >> t;
+
+          while (t--)
+          {
+                    string s;
+                    cin >> s;
+
+                    if (s.size() <= 10)
+                    {
+                              cout << s << "\n";
+                    }
+                    else
+                    {
+                              cout << s[0] << s.size() - 2 << s[s.size() - 1] << "\n";
+                    }
+          }
+
+          return 0;
 }
 ```
 
@@ -342,30 +416,38 @@ int main() {
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+int main()
+{
+          ios::sync_with_stdio(false);
+          cin.tie(nullptr);
 
-    int n;
-    cin >> n;
+          int n;
+          cin >> n;
 
-    vector<int> L(n), R(n);
-    int mnL = INT_MAX, mxR = INT_MIN;
+          vector<int> l(n), r(n);
+          
+          int mn = INT_MAX, mx = INT_MIN;
 
-    for (int i = 0; i < n; i++) {
-        cin >> L[i] >> R[i];
-        if (L[i] < mnL) mnL = L[i];
-        if (R[i] > mxR) mxR = R[i];
-    }
+          for (int i = 0; i < n; i++)
+          {
+                    cin >> l[i] >> r[i];
 
-    for (int i = 0; i < n; i++) {
-        if (L[i] == mnL && R[i] == mxR) {
-            cout << i + 1 << "\n";
-            return 0;
-        }
-    }
+                    mn = min(mn, l[i]);
+                    mx = max(mx, r[i]);
+          }
 
-    cout << -1 << "\n";
-    return 0;
+          for (int i = 0; i < n; i++)
+          {
+                    if (l[i] == mn && r[i] == mx)
+                    {
+                              cout << i + 1 << '\n';
+
+                              return 0;
+                    }
+          }
+
+          cout << -1 << '\n';
+
+          return 0;
 }
 ```
